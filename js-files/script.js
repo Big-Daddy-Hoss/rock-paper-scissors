@@ -29,25 +29,53 @@ function getPlayerChoice() {
 }
 
 function playRPS() {
-  let computerChoice = getComputerChoice(); //Both of these are coming out to void gotta fix this!
+  let computerChoice = getComputerChoice();
   let playerChoice = getPlayerChoice();
 
   //console.log(computerChoice);
   //console.log(playerChoice);
 
   if (computerChoice === playerChoice) {
-    alert("Tie!");
+    return "Tie!";
   } else if (
     (computerChoice === "rock" && playerChoice === "scissors") ||
     (computerChoice === "scissors" && playerChoice === "paper") ||
     (computerChoice === "paper" && playerChoice === "rock")
   ) {
-    alert("You Lose!");
+    return "You Lose!";
   } else if (
     (computerChoice === "rock" && playerChoice === "paper") ||
     (computerChoice === "scissors" && playerChoice === "rock") ||
     (computerChoice === "paper" && playerChoice === "scissors")
   ) {
-    alert("You Win!");
+    return "You Win!";
+  }
+}
+
+function playGame() {
+  let playerScore = 0;
+  let computerScore = 0;
+
+  while (playerScore < 3 && computerScore < 3) {
+    result = playRPS();
+    console.log(result);
+
+       // While loop won't stop. Do I need to define scores within while loop?
+    if (result === "You Win!") {
+      playerScore = playerScore + 1;
+      console.log("Player: " + playerScore);
+      console.log("Computer: " + computerScore);
+    } else if (result === "You Lose!") {
+      computerScore = computerScore + 1;
+      console.log("Player: " + playerScore);
+      console.log("Computer: " + computerScore);
+    } else {
+    }
+  }
+
+  if (playerScore == 3) {
+    alert( "You Win!");
+  } else {
+    alert ("You Lose!");
   }
 }
